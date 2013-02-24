@@ -115,6 +115,21 @@ public class UrlFilter implements Filter {
 				request.setAttribute(Constants.REQUEST_ATTR_URL_CONTEXT,
 						urlContext);
 
+				// Adding request attributes.
+				try {
+					String reqAttrsString = urlContext.getRequestAttributes();
+					if (reqAttrsString != null && !"".equals(reqAttrsString)) {
+						String[] keysValues = reqAttrsString.split(",");
+						for (int i = 0; i < keysValues.length; i += 2) {
+							request.setAttribute(keysValues[i],
+									keysValues[i + 1]);
+						}
+					}
+				} catch (Exception e) {
+					LOGGER.error("Error parsing request attributes for url - "
+							+ browserUrl, e);
+				}
+
 				// Dispatch URI to mapped resource.
 				request.getRequestDispatcher(urlContext.getResourceUrl())
 						.forward(

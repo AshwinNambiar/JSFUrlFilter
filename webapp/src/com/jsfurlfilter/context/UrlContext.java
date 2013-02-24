@@ -34,4 +34,6 @@ public interface UrlContext {
 	String redirectTo();
 	
 	String getELExecute();
+	
+	String getRequestAttributes();
 }

@@ -29,7 +29,7 @@ public class DefaultUrlContext implements UrlContext {
 	}
 
 	public static void prepareUrlMappings() {
-		Url url1 = new Url("/home", "/faces/home.xhtml", null, null, false,
+		Url url1 = new Url("/home", "/faces/home.xhtml", null, "key1,value1,key2,value2", false,
 				false, null);
 		urlMap.put("/home", url1);
 
@@ -82,6 +82,11 @@ public class DefaultUrlContext implements UrlContext {
 	@Override
 	public String getELExecute() {
 		return url.getExecute();
+	}
+
+	@Override
+	public String getRequestAttributes() {
+		return url.getRequestAttributes();
 	}
 
 }

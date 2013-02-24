@@ -33,7 +33,7 @@ public class DefaultUrlContext implements UrlContext {
 				false, null);
 		urlMap.put("/home", url1);
 
-		Url url2 = new Url("/page1", "/faces/page1.xhtml", null, null, false,
+		Url url2 = new Url("/page1", "/faces/page1.xhtml", "#{eLMethodBean.callElMethod('Page 1')}", null, false,
 				false, null);
 		urlMap.put("/page1", url2);
 
@@ -77,6 +77,11 @@ public class DefaultUrlContext implements UrlContext {
 	@Override
 	public String redirectTo() {
 		return this.url.getRedirectTo();
+	}
+
+	@Override
+	public String getELExecute() {
+		return url.getExecute();
 	}
 
 }

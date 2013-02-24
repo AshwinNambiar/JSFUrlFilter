@@ -32,4 +32,6 @@ public interface UrlContext {
 	boolean isPreserveRedirectParamsEnabled();
 
 	String redirectTo();
+	
+	String getELExecute();
 }
